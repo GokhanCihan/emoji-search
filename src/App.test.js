@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import Header from "./Header"
 import { render, screen } from "@testing-library/react"
 
 test("renders without crashing", () => {
@@ -8,9 +9,12 @@ test("renders without crashing", () => {
   ReactDOM.render(<App />, div);
 });
 
+test('renders Header component ', () => {
+  render(<Header />)
+})
+
 test('emojis are rendered on initial page-load', () => { 
   render(<App />)
   const emojiRows = screen.getByTestId("test-on-load")
-  console.log(emojiRows.querySelectorAll("div>div").length);
   expect(emojiRows.querySelectorAll("div>div").length === 20)
 })
